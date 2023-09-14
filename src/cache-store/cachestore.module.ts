@@ -7,7 +7,8 @@ let ROOT_STORE_OPTIONS:any;
 
 @Module({
     providers:[CacheStoreService],
-    exports:[CacheStoreService]
+    exports:[CacheStoreService],
+    
 })
 
 class RootCacheStoreModule{}
@@ -16,7 +17,7 @@ class RootCacheStoreModule{}
 @Module({
 })
 export class CacheStoreModule{
-    static forRoot(options:any):DynamicModule {
+    static forRoot(options?:any):DynamicModule {
         const STORE_OPTIONS = CacheStoreModule.buildStoreOptions(options);
         ROOT_STORE_OPTIONS = STORE_OPTIONS;
         return {
