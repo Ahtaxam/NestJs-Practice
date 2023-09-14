@@ -4,9 +4,12 @@ import { AppController } from './app.controller';
 import { AppService } from './app.service';
 import { Store } from './store/store';
 import { UserStore } from './store/UserStore';
-import { ConfigModule } from './config/config.module';
+// import { ConfigModule } from './config/config.module';
 import { JobsModule } from './jobs/jobs.module';
 import { CacheStoreModule } from './cache-store/cachestore.module';
+import { ConfigModule } from '@nestjs/config';
+import { APP_CONFIG } from './appconfig/app.config';
+import { DATABASE_CONFIG } from './appconfig/database.config';
 
 
 // let no = 50;
@@ -16,8 +19,16 @@ import { CacheStoreModule } from './cache-store/cachestore.module';
 // }
 
 @Module({
-  imports: [ConfigModule.register({Store_Name:"YT_STORE"}), JobsModule,
-    CacheStoreModule.forRoot({storeType:"File"})
+  imports: [JobsModule,
+    CacheStoreModule.forRoot({storeType:"File"}),
+    ConfigModule.forRoot({
+      // cache:true,
+      // expandVariables:true,
+      isGlobal:true,
+      // ignoreEnvFile:true,
+      load:[APP_CONFIG, DATABASE_CONFIG]
+    }),
+    // ConfigModule.register({Store_Name:"YT_STORE"})
 ],
   controllers: [AppController],
   providers: [AppService,

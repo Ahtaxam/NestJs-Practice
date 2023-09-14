@@ -5,7 +5,7 @@ import { CacheStoreService } from './cache-store/cachestore.service';
 @Injectable()
 export class AppService {
   constructor(
-    private configService:ConfigService,
+    // private configService:ConfigService,
     private cacheStore:CacheStoreService
   
     ){

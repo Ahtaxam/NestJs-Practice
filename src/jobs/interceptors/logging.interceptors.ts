@@ -7,7 +7,7 @@ export class LoggingInterceptor implements NestInterceptor {
         const ctx = context.switchToHttp();
         const request = ctx.getRequest();
 
-        // console.log("Incoming request :", request.body);
+        console.log("Incoming request :", request.body);
         
 
         console.log("Before");
